@@ -1,0 +1,14 @@
+[package]
+name = "tree-sitter-languages-example"
+version = "0.1.0"
+authors = ["Stephan Wolski"]
+edition = "2018"
+
+[dependencies]
+tree-sitter-languages = { path = ".." }
+tree-sitter = "0.3.10"
+
+[features]
+default = ["systems"]
+systems = ["tree-sitter-languages/c", "tree-sitter-languages/cpp", "tree-sitter-languages/rust"]
+scripting = ["tree-sitter-languages/python"]

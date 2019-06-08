@@ -1,0 +1,22 @@
+agda
+bash
+c
+c-sharp
+cpp
+css
+fluent
+go
+haskell
+java
+javascript
+jsdoc
+json
+julia
+ocaml
+python
+regex
+ruby
+rust
+scala
+# typescript, nonstandard structure, TODO: support
+# verilog, gencode isn't commited
