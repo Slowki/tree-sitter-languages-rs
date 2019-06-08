@@ -92,6 +92,14 @@ EOF
     done
 }
 
+gitignore_comment="# repositories list"
+function generate-gitignore() {
+    echo $gitignore_comment
+    for entry in $languages; do
+        echo "/$entry"
+    done
+}
+
 sed -i '/\[features\]/,$d' $ROOT_DIR/Cargo.toml
 generate-features >> $ROOT_DIR/Cargo.toml
 
@@ -99,6 +107,9 @@ sed -i '/fn main() {/,$d' $ROOT_DIR/build.rs
 generate-build-rs >> $ROOT_DIR/build.rs
 
 generate-lib-rs > $ROOT_DIR/src/lib.rs
+
+sed -i "/$gitignore_comment/,\$d" $ROOT_DIR/.gitignore
+generate-gitignore >> $ROOT_DIR/.gitignore
 
 cd $ROOT_DIR
 cargo fmt

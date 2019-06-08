@@ -1,6 +1,5 @@
 use git2::Repository;
 use std::cmp::Ordering;
-use std::env;
 use std::path::Path;
 
 static BASE_URL: &'static str = "https://github.com/tree-sitter/tree-sitter-";
@@ -47,8 +46,7 @@ fn get_highest<'a>(tags: impl Iterator<Item = &'a str>) -> Option<&'a str> {
 }
 
 fn build_language(name: &'static str, branch: Option<&'static str>, subdir: Option<&'static str>) {
-    let out_dir_str = env::var("OUT_DIR").unwrap();
-    let repo_dir = Path::new(&out_dir_str).join(name);
+    let repo_dir = Path::new(name);
     println!("Building {}", name);
 
     let repo = if !repo_dir.exists() {
